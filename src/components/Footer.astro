@@ -1,0 +1,19 @@
+---
+import FooterLinks from "./FooterLinks.astro";
+import { socialLinks, codingLinks, others } from "../content/footer-links.ts";
+---
+
+<footer class="py-8 bg-[var(--casal)] text-[var(--off-white)]">
+  <div
+    class="container max-w-6xl mx-auto flex justify-between flex-wrap gap-4 max-sm:flex-col my-3"
+  >
+    <FooterLinks links={socialLinks} name="Social Links" />
+    <FooterLinks links={codingLinks} name="Coding Platforms" />
+    <FooterLinks links={others} name="Other Links" />
+  </div>
+  <span class="copyrights text-xs text-center block">
+    Copyright @ 2021-2025 Ahmed Mohamed Jassem
+  </span>
+</footer>
+
+<style></style>

@@ -1,0 +1,14 @@
+---
+import Menu from "./Menu.astro";
+import CTAButton from "./CTAButton.astro";
+import "../styles/container.css";
+---
+
+<header
+  class="fixed top-0 left-0 w-full z-50 bg-[var(--off-white)] border-b-2 border-solid border-b-[var(--black)]"
+>
+  <div class="container flex justify-between items-center py-4">
+    <Menu />
+    <CTAButton text="Let's Talk" type="bg-empty" ref="#contact" />
+  </div>
+</header>

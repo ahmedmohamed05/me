@@ -1,0 +1,17 @@
+---
+interface Props {
+  name: string;
+  icon: string;
+  delay?: number;
+}
+const { name, icon, delay } = Astro.props;
+const altText = `icon of ${name}`;
+---
+
+<div
+  class="fade-in-element skill flex items-center gap-2 rounded-[3px] p-0.5"
+  style={`transition-delay: ${delay}ms;`}
+>
+  <img src={icon} alt={altText} class="h-8 w-8" />
+  <span class="name text-[1.25rem]">{name}</span>
+</div>

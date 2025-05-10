@@ -1,0 +1,49 @@
+---
+import "../styles/global.css";
+import "../styles/animations.css";
+import { Font } from "astro:assets";
+import CTAButton from "../components/CTAButton.astro";
+import "../styles/container.css";
+---
+
+<Font cssVariable="--font-comic" />
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thank You</title>
+  </head>
+
+  <body>
+    <div
+      class="container flex justify-center items-center flex-col h-dvh w-full"
+    >
+      <h1>Thank You For Your Message!</h1>
+      <CTAButton
+        text="Go Back"
+        ref="http://192.168.100.6:4321"
+        newTab={false}
+        type="bg-casal"
+      />
+    </div>
+  </body>
+
+  <style>
+    h1 {
+      font-size: clamp(2rem, 1.286rem + 3.038vw, 4rem);
+      margin-bottom: 1.5rem;
+    }
+  </style>
+
+  <script>
+    const body = document.body;
+
+    document.addEventListener("mousemove", (event: MouseEvent) => {
+      const mouseX = event.clientX / 65;
+      const mouseY = event.clientY / 65;
+
+      body.style.backgroundPosition = `${mouseX}px ${mouseY}px`;
+    });
+  </script>
+</html>

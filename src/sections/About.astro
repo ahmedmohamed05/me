@@ -1,0 +1,38 @@
+---
+import ProfileLinks from "../components/ProfileLinks.astro";
+import { profileLinks } from "../content/links";
+import Section from "../layout/Section.astro";
+---
+
+<Section id="about" classes="py-0">
+  <div class="container">
+    <h1 class="fade-in-element font-bold">About Me</h1>
+    <div class="fade-in-element max-w-[800px]">
+      <p>
+        Self-taught front-end web developer who has solved over 500 problems,
+        including 350+ on CodeWars using TypeScript, JavaScript, and C++. I am
+        eager to create modern and responsive websites and have a strong
+        interest in Linux/Unix systems.
+      </p>
+      <ProfileLinks links={profileLinks} />
+    </div>
+  </div>
+</Section>
+
+<style>
+  h1 {
+    font-size: clamp(2rem, 1.286rem + 3.038vw, 4rem);
+    margin-bottom: 1.5rem;
+  }
+
+  p {
+    font-size: clamp(1.1rem, 0.636rem + 1.238vw, 1.75rem);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+</style>
+
+<script>
+  import { fadeIn } from "../utils/fadeIn";
+  fadeIn();
+</script>

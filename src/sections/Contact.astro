@@ -1,0 +1,159 @@
+---
+
+---
+
+<section id="contact" class="py-20">
+  <div class="container">
+    <h1 class="fade-in-element font-bold text-center">Contact Me</h1>
+    <p class="text fade-in-element text-center mb-4">
+      I'm always excited to work with new people and help them achieve their
+      Goals, or want to say hi, feel free to send me a message
+    </p>
+    <form
+      class="fade-in-element border-[1px] border-[var(--black)] md:flex md:flex-wrap gap-4 bg-[var(--off-white)] max-w-6xl mx-auto p-4"
+      action="https://formsubmit.co/ahmedmohuammed.dev@gmail.com"
+      method="POST"
+    >
+      <label for="name">
+        <p>
+          <span>Name <span class="text-red-600">*</span></span>
+        </p>
+        <input type="text" id="name" placeholder="Your Name" required />
+      </label>
+      <label for="email">
+        <p>
+          <span>Email <span class="text-red-600">*</span></span>
+        </p>
+        <input type="email" id="email" placeholder="Your Email" required />
+      </label>
+      <label for="msg" class="w-full">
+        <p>
+          <span>Message <span class="text-red-600">*</span></span>
+        </p>
+        <textarea name="msg" id="msg" placeholder="Message" required></textarea>
+      </label>
+      <button
+        type="submit"
+        class="relative cursor-pointer overflow-hidden flex items-center justify-center gap-1 ml-auto border-2 border-[var(--casal)] py-2 px-4 w-full md:w-auto"
+      >
+        <img
+          src="/icons/send.svg"
+          alt="Send Message"
+          class="w-4 h-4 transition-transform"
+        />
+        <span class="transition-opacity">Send</span>
+      </button>
+
+      <input
+        type="hidden"
+        name="_next"
+        value="http://192.168.100.6:4321/thank-you.html"
+      />
+      <input type="hidden" name="_captcha" value="false" />
+    </form>
+  </div>
+</section>
+
+<style>
+  h1 {
+    font-size: clamp(2rem, 1.286rem + 3.038vw, 3.5rem);
+  }
+  .text {
+    font-size: clamp(0.825rem, 0.593rem + 0.619vw, 1.15rem);
+  }
+
+  form {
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
+    transition: 300ms;
+  }
+  form:is(:focus, :focus-within, :focus-visible) {
+    translate: 0 -2px;
+    box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.2);
+  }
+
+  label {
+    display: block;
+    margin-block: 1rem;
+  }
+
+  label p {
+    margin-block-end: 0.25rem;
+  }
+
+  input,
+  textarea {
+    display: block;
+    border: solid 1px var(--black);
+    width: 100%;
+    padding: 0.25rem;
+    outline: none;
+    translate: 0 3px;
+    transition: translate 200ms ease-out;
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
+
+    &:focus {
+      outline: solid 1px var(--casal);
+      translate: 0 0;
+      box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  textarea {
+    min-height: 200px;
+    resize: none;
+  }
+
+  @media (min-width: 768px) {
+    form label:not([for="msg"]) {
+      flex: 2;
+      margin-block-end: 0.5rem;
+    }
+  }
+
+  button {
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
+  }
+
+  button.sent {
+    background: var(--casal);
+    color: var(--off-white);
+  }
+
+  button.flying span {
+    opacity: 0;
+  }
+
+  button.flying img {
+    rotate: 45deg;
+    animation: flying 2.5s infinite forwards;
+    scale: 1.2;
+  }
+
+  button.sent img {
+    filter: var(--filter-off-white);
+  }
+</style>
+
+<script>
+  const form = document.querySelector("form") as HTMLElement;
+  const submitBtn = document.querySelector(
+    "button[type='submit']"
+  ) as HTMLElement;
+  const submitBtnText = submitBtn.querySelector("span") as HTMLElement;
+
+  const inputs = form.querySelectorAll(
+    "label input"
+  ) as NodeListOf<HTMLInputElement>;
+  const textarea = form.querySelector("textarea") as HTMLTextAreaElement;
+
+  form.onsubmit = (e) => {
+    submitBtn.classList.remove("sent");
+    submitBtn.classList.add("flying");
+
+    setTimeout(() => {
+      submitBtn.classList.remove("flying");
+      submitBtn.classList.add("sent");
+      submitBtnText.innerText = "Sent!";
+    }, 2500);
+  };
+</script>

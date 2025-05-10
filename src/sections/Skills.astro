@@ -1,0 +1,40 @@
+---
+import Section from "../layout/Section.astro";
+import { skills } from "../content/skills";
+import Skill from "../components/Skill.astro";
+---
+
+<Section id="skills">
+  <div class="container">
+    <h1 class="fade-in-element font-bold">Skills</h1>
+    <div
+      class="categories flex justify-center items-center flex-col xl:flex-row"
+    >
+      {
+        skills.map((skill) => {
+          return (
+            <div class="category flex flex-col md:flex-row gap-10 fade-in-element my-8">
+              <h3 class="cat-name text-3xl">{skill.category}</h3>
+              <ul class="cat-skills flex items-center gap-6 flex-wrap *:delay-75">
+                {skill.items.map((item, index) => {
+                  const delay = index * 100;
+                  return (
+                    <li>
+                      <Skill {...item} delay={delay} />
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</Section>
+
+<style>
+  h1 {
+    font-size: clamp(2rem, 1.286rem + 3.038vw, 4rem);
+  }
+</style>

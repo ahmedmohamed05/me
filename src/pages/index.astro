@@ -1,16 +1,73 @@
 ---
-
+import "../styles/global.css";
+import "../styles/animations.css";
+import { Font } from "astro:assets";
+import Header from "../components/Header.astro";
+import Landing from "../sections/Landing.astro";
+import About from "../sections/About.astro";
+import Works from "../sections/Works.astro";
+import Skills from "../sections/Skills.astro";
+import Contact from "../sections/Contact.astro";
+import Footer from "../components/Footer.astro";
 ---
 
+<Font cssVariable="--font-comic" />
+
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Professional Front End Developer specializing in modern web development, responsive design, and user experience optimization."
+    />
+    <meta
+      name="keywords"
+      content="front end developer, web developer, javascript, react, astro, responsive design, UI/UX"
+    />
+    <meta name="author" content="Ahmed Mohamed" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="Front End Developer Portfolio" />
+    <meta
+      property="og:description"
+      content="Professional Front End Developer specializing in modern web development, responsive design, and user experience optimization."
+    />
+    <meta property="og:type" content="website" />
+    <!-- <meta property="og:url" content="https://your-portfolio-url.com" /> -->
+    <meta
+      name="twitter:description"
+      content="Professional Front End Developer specializing in modern web development, responsive design, and user experience optimization."
+    />
+    <meta name="generator" content={Astro.generator} />
+    <!-- <link rel="canonical" href="https://your-portfolio-url.com" /> -->
+    <title>Ahmed</title>
+  </head>
+
+  <body>
+    <Header />
+    <Landing />
+    <About />
+    <Works />
+    <Skills />
+    <Contact />
+    <Footer />
+  </body>
+
+  <script>
+    import { activeSection } from "../utils/activeSection";
+
+    // Initialize active section detection
+    document.addEventListener("DOMContentLoaded", () => {
+      activeSection();
+    });
+
+    const body = document.body;
+
+    document.addEventListener("mousemove", (event: MouseEvent) => {
+      const mouseX = event.clientX / 70;
+      const mouseY = event.clientY / 70;
+
+      body.style.backgroundPosition = `${mouseX}px ${mouseY}px`;
+    });
+  </script>
 </html>

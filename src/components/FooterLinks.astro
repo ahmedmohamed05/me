@@ -1,0 +1,34 @@
+---
+import { type ProfileLink } from "../content/links.ts";
+
+type Link = { name: string; ref: string };
+interface Props {
+  name: string;
+  links: ProfileLink[];
+}
+
+const { name, links } = Astro.props;
+---
+
+<div class="footer-links">
+  <p class="title text-2xl font-bold">{name}</p>
+  <ul class="links">
+    {
+      links.map((link) => {
+        const altText = link.name + " Icon";
+        return (
+          <li class="my-3 text-xl">
+            <a href={link.url} class="flex items-center gap-2 w-fit">
+              <img
+                src={link.icon}
+                alt={altText}
+                class="w-3.5 h-3.5 filter-[var(--filter-off-white)]"
+              />
+              <span>{link.name}</span>
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</div>

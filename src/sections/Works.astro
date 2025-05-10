@@ -1,0 +1,32 @@
+---
+import WorkCard from "../components/WorkCard.astro";
+import { works } from "../content/works";
+import Section from "../layout/Section.astro";
+---
+
+<Section id="works">
+  <div class="container">
+    <h1 class="fade-in-element font-bold">My Works</h1>
+    <div class="works-grid fade-in-element">
+      {works.map((work) => <WorkCard {...work} />)}
+    </div>
+  </div>
+</Section>
+
+<style>
+  h1 {
+    font-size: clamp(2rem, 1.286rem + 3.038vw, 4rem);
+    margin-bottom: 2rem;
+  }
+
+  .works-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
+    gap: 2rem;
+  }
+</style>
+
+<script>
+  import { fadeIn } from "../utils/fadeIn";
+  fadeIn();
+</script>

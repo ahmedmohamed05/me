@@ -1,0 +1,146 @@
+---
+interface Props {
+  images: string[];
+  title: string;
+  description: string;
+}
+
+const { images, title, description } = Astro.props;
+const altText = `${title} - ${description}`;
+---
+
+<div class="relative w-full aspect-video overflow-hidden">
+  <div
+    class="slider flex w-full h-full transition-transform duration-300 ease-in-out"
+  >
+    {
+      images.map((image, index) => (
+        <div class="slide flex-none w-full h-full" data-index={index}>
+          <img
+            loading="lazy"
+            src={image}
+            alt={`${altText} - Image ${index + 1}`}
+            class="w-full h-full object-cover"
+          />
+        </div>
+      ))
+    }
+  </div>
+
+  {
+    images.length > 1 && (
+      <>
+        <button class="slide-btn left" aria-label="Previous image">
+          <img
+            src="/icons/chevron-down-solid.svg"
+            alt="Previous Image"
+            width="20"
+            height="20"
+            class="rotate-90"
+          />
+        </button>
+        <button class="slide-btn right" aria-label="Next image">
+          <img
+            src="/icons/chevron-down-solid.svg"
+            alt="Next Image"
+            width="20"
+            height="20"
+            class="-rotate-90"
+          />
+        </button>
+
+        <div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+          {images.map((_, index) => (
+            <button
+              class="w-3 h-3 rounded-full bg-[var(--off-white)] border-2 border-[var(--black)] cursor-pointer transition-all duration-200 ease-in-out hover:scale-110 data-[active=true]:bg-[var(--casal)] data-[active=true]:scale-120 focus:scale-110"
+              data-index={index}
+              data-active={index === 0}
+              aria-label={`Go to image ${index + 1}`}
+            />
+          ))}
+        </div>
+      </>
+    )
+  }
+</div>
+
+<style>
+  .slide-btn {
+    position: absolute;
+    top: 50%;
+    translate: 0% -50%;
+    background-color: var(--off-white);
+    border: solid 2px var(--black);
+    border-radius: 50%;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: 200ms;
+
+    &.left {
+      left: 1rem;
+    }
+    &.right {
+      right: 1rem;
+    }
+  }
+
+  @media (hover) {
+    .slide-btn:hover {
+      background-color: var(--casal);
+      scale: 1.15;
+    }
+    .slide-btn:hover img {
+      filter: var(--filter-off-white);
+    }
+
+    .slide-btn:not(:hover):focus {
+      outline: solid 2px var(--black);
+      scale: 1.2;
+    }
+  }
+</style>
+
+<script>
+  function initSlider(element: Element) {
+    const sliderContainer = element as HTMLElement;
+    const slider = sliderContainer.querySelector(".slider") as HTMLElement;
+    const slides = sliderContainer.querySelectorAll(".slide");
+    const prevButton = sliderContainer.querySelector(
+      "button[aria-label='Previous image']"
+    ) as HTMLButtonElement;
+    const nextButton = sliderContainer.querySelector(
+      "button[aria-label='Next image']"
+    ) as HTMLButtonElement;
+    const dots = sliderContainer.querySelectorAll("button[data-index]");
+
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+
+    function updateSlider() {
+      slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+      dots.forEach((dot, index) => {
+        dot.setAttribute(
+          "data-active",
+          index === currentIndex ? "true" : "false"
+        );
+      });
+    }
+
+    function goToSlide(index: number) {
+      currentIndex = (index + totalSlides) % totalSlides;
+      updateSlider();
+    }
+
+    prevButton?.addEventListener("click", () => goToSlide(currentIndex - 1));
+    nextButton?.addEventListener("click", () => goToSlide(currentIndex + 1));
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener("click", () => goToSlide(index));
+    });
+  }
+
+  // Initialize all sliders on the page
+  document
+    .querySelectorAll(".relative.w-full.aspect-video")
+    .forEach(initSlider);
+</script>

@@ -1,0 +1,72 @@
+---
+import CTAButton from "../components/CTAButton.astro";
+import "../styles/global.css";
+import "../styles/animations.css";
+---
+
+<section id="landing" class="landing grid place-items-center h-dvh">
+  <div class="container fade-in-element">
+    <div class="text py-8">
+      <p>Hi, I'm</p>
+      <br />
+      <h1>Ahmed,</h1>
+      <p>And I'm</p>
+      <br />
+      <h1 id="animation" class="select-none"></h1>
+    </div>
+
+    <div class="buttons flex justify-center gap-6">
+      <CTAButton text="Works" ref="#works" type="bg-empty" />
+      <CTAButton text="Resume" ref="/cv.pdf" type="bg-casal" />
+    </div>
+
+    <a
+      class="scroll-arrow animate-bounce grid place-items-center mt-40"
+      href="#about"
+    >
+      <img
+        src="/icons/chevron-down-solid.svg"
+        alt="Arrow Pointing Down takes you to the about section"
+        class="down-icon h-10 w-10 filter-casal"
+      />
+    </a>
+  </div>
+</section>
+
+<style>
+  p,
+  h1 {
+    display: inline;
+  }
+  p {
+    font-size: clamp(1.5rem, 0.429rem + 2.857vw, 3rem);
+  }
+  h1 {
+    font-size: clamp(2.4rem, 1.586rem + 3.238vw, 4.5rem);
+    letter-spacing: 3px;
+    word-wrap: break-word;
+    max-width: 100%;
+  }
+
+  #animation {
+    color: var(--orange);
+    border-right: 0.15em solid var(--orange);
+    animation: blink-caret 750ms step-end infinite forwards;
+  }
+</style>
+
+<script>
+  import { animate } from "../utils/typing-animation";
+
+  const title = document.getElementById("animation")!;
+  const sentences: string[] = [
+    "A Web Developer",
+    "A Problem Solver",
+    "An IT Student",
+  ];
+  const letterDuration = 200;
+  const deleteTextTime = 50;
+  const displayingTime = 3000;
+
+  animate(title, sentences, letterDuration, deleteTextTime, displayingTime);
+</script>

@@ -1,0 +1,108 @@
+---
+type ButtonType = "bg-casal" | "bg-empty";
+interface Props {
+  text: string;
+  type: ButtonType;
+  ref?: string;
+  newTab?: boolean | undefined;
+}
+const { text, type, ref, newTab } = Astro.props;
+
+let pageTarget: "_blank" | "" = "";
+
+if (newTab) {
+  pageTarget = "_blank";
+} else if (!newTab) {
+  pageTarget = "";
+} else if (
+  ref?.startsWith("http") ||
+  (ref?.startsWith("/") && typeof newTab === "undefined")
+) {
+  pageTarget = "_blank";
+}
+---
+
+<a
+  href={ref ? ref : "#"}
+  class={`${type} overflow-hidden relative font-bold w-fit py-2 px-3`}
+  data-text={text}
+  target={pageTarget}
+  rel={ref?.startsWith("http") || ref?.startsWith("/")
+    ? "noopener noreferrer"
+    : undefined}
+>
+  {text}
+</a>
+
+<style>
+  a {
+    --_duration: 300ms;
+    font-size: clamp(1rem, 0.8rem + 0.5vw, 1.25rem);
+    border: solid 2px var(--casal);
+    transform: translateY(0);
+    transition: all var(--_duration) cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
+  }
+
+  .bg-empty {
+    color: var(--casal);
+    background-color: transparent;
+    transition: all calc(var(--_duration) - 120ms) cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .bg-empty::before {
+    content: "";
+    transition: var(--_duration) cubic-bezier(0.4, 0, 0.2, 1);
+    width: 100%;
+    height: 100%;
+    background-color: var(--casal);
+    left: 0;
+    bottom: 0;
+    position: absolute;
+    z-index: -1;
+    transform-origin: bottom;
+    transform: scaleY(0);
+  }
+
+  @media (hover) {
+    .bg-empty:is(:hover, :focus) {
+      color: var(--off-white);
+      transform: translateY(-3px);
+      box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.2);
+    }
+    .bg-empty:is(:hover, :focus)::before {
+      transform: scaleY(1);
+    }
+  }
+
+  .bg-casal {
+    color: var(--off-white);
+    transition: all calc(var(--_duration) - 120ms) cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .bg-casal::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: var(--casal);
+    left: 0;
+    bottom: 0;
+    translate: 0 0;
+    transform-origin: bottom;
+    transition: var(--_duration) cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: -1;
+    transform: scaleY(1);
+  }
+
+  @media (hover) {
+    .bg-casal:is(:hover, :focus) {
+      color: var(--casal);
+      transform: translateY(-3px);
+      box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.2);
+    }
+    .bg-casal:is(:hover, :focus)::before {
+      transform: scaleY(0);
+    }
+  }
+</style>
