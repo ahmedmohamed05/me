@@ -1,4 +1,7 @@
 import { type Tech } from "./skills";
+// import { xo1 } from "../images/xo-1.png";
+// import xo2 from "../images/xo-2.png";
+// import xo3 from "../images/xo-3.png";
 
 export interface Work {
   title: string;
@@ -14,11 +17,7 @@ export const works: Work[] = [
     title: "AI XO Game",
     description:
       "Simple XO game, where you can play against the computer (Simple AI) or your friend locally",
-    images: [
-      "/src/images/xo-1.png",
-      "/src/images/xo-2.png",
-      "/src/images/xo-3.png",
-    ],
+    images: ["/images/xo-1.png", "/images/xo-2.png", "/images/xo-3.png"],
     link: "https://ahmedmohamed05.github.io/xo/",
     repo: "https://github.com/ahmedmohamed05/xo",
     technologies: [
@@ -41,10 +40,10 @@ export const works: Work[] = [
     description:
       "A Football quiz desktop app with simple data-base for the accounts and scores",
     images: [
-      "/src/images/true-footballer-1.png",
-      "/src/images/true-footballer-2.png",
-      "/src/images/true-footballer-3.png",
-      "/src/images/true-footballer-4.png",
+      "/images/true-footballer-1.png",
+      "/images/true-footballer-2.png",
+      "/images/true-footballer-3.png",
+      "/images/true-footballer-4.png",
     ],
     repo: "https://github.com/ahmedmohamed05/true-footballer",
     technologies: [
