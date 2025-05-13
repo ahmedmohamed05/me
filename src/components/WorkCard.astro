@@ -2,6 +2,8 @@
 import type { Tech } from "../content/skills";
 import CTAButton from "./CTAButton.astro";
 import ImageSlider from "./ImageSlider.astro";
+import Skill from "./Skill.astro";
+import Image from "astro/components/Image.astro";
 
 interface Props {
   title: string;
@@ -26,21 +28,26 @@ const { title, description, images, link, repo, technologies } = Astro.props;
       {link && <CTAButton ref={link} type="bg-casal" text="Live Site" />}
       <CTAButton ref={repo} type="bg-empty" text="Repository" />
     </div>
-    <!-- TODO -->
-    <!-- <div class="technologies">
-      <ul class="cat-skills flex items-center gap-6 flex-wrap *:delay-75">
-        {
-          technologies.map((item, index) => {
-            const delay = index * 100;
-            return (
-              <li>
-                <Skill {...item} delay={delay} />
-              </li>
-            );
-          })
-        }
-      </ul>
-    </div> -->
+    <ul class="flex items-center gap-6 flex-wrap mt-4">
+      {
+        technologies.map((item, index) => {
+          const delay = index * 100;
+          return (
+            <li
+              class="flex items-center gap-1 border-[1px] fade-in-element p-1 rounded shadow-md"
+              style={`transition-delay: ${delay}ms`}
+            >
+              <img
+                src={item.icon}
+                alt={`${item.name} icon`}
+                class="w-7 aspect-square"
+              />
+              <span class="text-sm">{item.name}</span>
+            </li>
+          );
+        })
+      }
+    </ul>
   </div>
 </article>
 
