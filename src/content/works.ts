@@ -71,7 +71,6 @@ export const works: Work[] = [
       "/images/true-footballer-4.png",
     ],
     repo: "https://github.com/ahmedmohamed05/true-footballer",
-    link: "https://ahmedmohamed05.github.io/clone-google/",
     technologies: [
       {
         name: "C++",
