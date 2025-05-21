@@ -1,7 +1,3 @@
----
-
----
-
 <section id="contact" class="py-20">
   <div class="container">
     <h1 class="fade-in-element font-bold text-center">Contact Me</h1>
@@ -18,19 +14,32 @@
         <p>
           <span>Name <span class="text-red-600">*</span></span>
         </p>
-        <input type="text" id="name" placeholder="Your Name" required />
+        <input
+          type="text"
+          id="name"
+          placeholder="Your Name"
+          name="name"
+          required
+        />
       </label>
       <label for="email">
         <p>
           <span>Email <span class="text-red-600">*</span></span>
         </p>
-        <input type="email" id="email" placeholder="Your Email" required />
+        <input
+          type="email"
+          id="email"
+          placeholder="Your Email"
+          name="email"
+          required
+        />
       </label>
       <label for="msg" class="w-full">
         <p>
           <span>Message <span class="text-red-600">*</span></span>
         </p>
-        <textarea name="msg" id="msg" placeholder="Message" required></textarea>
+        <textarea name="Message Content" id="msg" placeholder="Message" required
+        ></textarea>
       </label>
       <button
         type="submit"
