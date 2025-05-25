@@ -32,6 +32,32 @@ export const works: Work[] = [
   //     },
   //   ],
   // },
+  {
+    title: "Watches E-Commerce",
+    description: "Watches store",
+    images: [
+      "/images/watches-1.png",
+      "/images/watches-2.png",
+      "/images/watches-3.png",
+      "/images/watches-4.png",
+    ],
+    link: "https://ahmedmohamed05.github.io/e-commerce/",
+    repo: "https://github.com/ahmedmohamed05/e-commerce",
+    technologies: [
+      {
+        name: "React",
+        icon: "/icons/react.svg",
+      },
+      {
+        name: "Ts",
+        icon: "/icons/ts.svg",
+      },
+      {
+        name: "Tailwind CSS",
+        icon: "/icons/tailwind.svg",
+      },
+    ],
+  },
 
   {
     title: "Sudoku",
