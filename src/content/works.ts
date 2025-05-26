@@ -41,7 +41,7 @@ export const works: Work[] = [
       "/images/watches-3.png",
       "/images/watches-4.png",
     ],
-    link: "https://ahmedmohamed05.github.io/e-commerce/",
+    link: "https://watch-haven.netlify.app/",
     repo: "https://github.com/ahmedmohamed05/e-commerce",
     technologies: [
       {
@@ -68,7 +68,7 @@ export const works: Work[] = [
       "/images/sudoku-3.png",
       "/images/sudoku-4.png",
     ],
-    link: "https://ahmedmohamed05.github.io/sudoku/",
+    link: "https://jsudoku.netlify.app/",
     repo: "https://github.com/ahmedmohamed05/sudoku",
     technologies: [
       {
