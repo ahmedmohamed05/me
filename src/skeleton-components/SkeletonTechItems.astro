@@ -1,0 +1,19 @@
+---
+import "../styles/skeleton-loading.css";
+
+interface Props {
+  technologiesCount?: number;
+}
+
+const { technologiesCount = 1 } = Astro.props;
+---
+
+<div class="technologies flex gap-2.5 items-center">
+  {
+    Array.from({ length: technologiesCount }, (_) => (
+      <div class="tech-item">
+        <div class="skeleton skeleton-technology" />
+      </div>
+    ))
+  }
+</div>

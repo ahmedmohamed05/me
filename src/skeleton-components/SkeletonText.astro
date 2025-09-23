@@ -1,0 +1,11 @@
+---
+import "../styles/skeleton-loading.css";
+interface Props {
+  size: "large" | "medium" | "small";
+  width?: string;
+}
+
+const { size, width = "auto" } = Astro.props;
+---
+
+<div class=`skeleton skeleton-text ${size}` style=`width: ${width};`></div>
