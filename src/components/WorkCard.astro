@@ -2,8 +2,6 @@
 import type { Tech } from "../content/skills";
 import CTAButton from "./CTAButton.astro";
 import ImageSlider from "./ImageSlider.astro";
-import Skill from "./Skill.astro";
-import Image from "astro/components/Image.astro";
 
 interface Props {
   title: string;
@@ -40,9 +38,9 @@ const { title, description, images, link, repo, technologies } = Astro.props;
               <img
                 src={item.icon}
                 alt={`${item.name} icon`}
-                class="w-7 aspect-square"
+                class="w-9 aspect-square"
               />
-              <span class="text-sm">{item.name}</span>
+              <span class="text-lg">{item.name}</span>
             </li>
           );
         })
@@ -88,19 +86,20 @@ const { title, description, images, link, repo, technologies } = Astro.props;
   }
 
   h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.75rem;
+    font-size: 2rem;
+    font-weight: bold;
     color: var(--black);
   }
 
   p {
-    font-size: 1rem;
+    font-size: 1.4rem;
     line-height: 1.5;
     color: var(--casal);
     margin-bottom: 1rem;
   }
 
   .buttons {
+    margin-block-start: 1.5rem;
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;

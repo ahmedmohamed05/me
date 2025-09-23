@@ -7,7 +7,7 @@
   --orange: #ff7d00;
   --brown: #78290f;
 
-  /* Fitlers */
+  /* Filters */
   --filter-off-white: invert(89%) sepia(30%) saturate(480%) hue-rotate(313deg)
     brightness(108%) contrast(101%);
   --filter-casal: invert(27%) sepia(90%) saturate(437%) hue-rotate(140deg)
