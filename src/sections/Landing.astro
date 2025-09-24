@@ -2,34 +2,49 @@
 import CTAButton from "../components/CTAButton.astro";
 import "../styles/global.css";
 import "../styles/animations.css";
+import "../styles/skeleton-loading.css";
+import SkeletonText from "../skeleton-components/SkeletonText.astro";
 ---
 
 <section id="landing" class="landing grid place-items-center h-dvh">
   <div class="container fade-in-element">
-    <div class="text py-8">
-      <p>Hi, I'm</p>
-      <br />
-      <h1>Ahmed,</h1>
-      <p>And I'm</p>
-      <br />
-      <h1 id="animation" class="select-none"></h1>
-    </div>
+    <!-- TODO add skeleton loading -->
+    <!-- Skeleton Loading State -->
+    <!-- <div class="skeleton-landing" id="skeleton-landing">
+      <div class="text py-8">
+        <SkeletonText size="medium" width="80px" />
+        <br />
+        <SkeletonText size="large" width="200px" />
+        <SkeletonText size="medium" width="60px" />
+      </div>
+    </div> -->
 
-    <div class="buttons flex justify-center gap-6">
-      <CTAButton text="Works" ref="#works" type="bg-empty" />
-      <CTAButton text="Resume" ref="/cv.pdf" type="bg-casal" />
-    </div>
+    <div class="landing" id="actual-landing">
+      <div class="text py-8">
+        <p>Hi, I'm</p>
+        <br />
+        <h1>Ahmed,</h1>
+        <p>And I'm</p>
+        <br />
+        <h1 id="animation" class="select-none"></h1>
+      </div>
 
-    <a
-      class="scroll-arrow animate-bounce grid place-items-center mt-40"
-      href="#about"
-    >
-      <img
-        src="/icons/chevron-down-solid.svg"
-        alt="Arrow Pointing Down takes you to the about section"
-        class="down-icon h-10 w-10 filter-casal"
-      />
-    </a>
+      <div class="buttons flex justify-center gap-6">
+        <CTAButton text="Works" ref="#works" type="bg-empty" />
+        <CTAButton text="Resume" ref="/cv.pdf" type="bg-casal" />
+      </div>
+
+      <a
+        class="scroll-arrow animate-bounce grid place-items-center mt-40"
+        href="#about"
+      >
+        <img
+          src="/icons/chevron-down-solid.svg"
+          alt="Arrow Pointing Down takes you to the about section"
+          class="down-icon h-10 w-10 filter-casal"
+        />
+      </a>
+    </div>
   </div>
 </section>
 
