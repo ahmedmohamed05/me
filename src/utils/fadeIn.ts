@@ -5,9 +5,9 @@ export function fadeIn() {
         if (entry.isIntersecting) {
           entry.target.classList.add("fade-in");
         }
-        if (!entry.isIntersecting) {
-          entry.target.classList.remove("fade-in");
-        }
+        // if (!entry.isIntersecting) {
+        //   entry.target.classList.remove("fade-in");
+        // }
       });
     },
     {

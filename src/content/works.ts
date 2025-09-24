@@ -10,28 +10,6 @@ export interface Work {
 }
 
 export const works: Work[] = [
-  // {
-  //   title: "AI XO Game",
-  //   description:
-  //     "Simple XO game, where you can play against the computer (Simple AI) or your friend locally",
-  //   images: ["/images/xo-1.png", "/images/xo-2.png", "/images/xo-3.png"],
-  //   link: "https://ahmedmohamed05.github.io/xo/",
-  //   repo: "https://github.com/ahmedmohamed05/xo",
-  //   technologies: [
-  //     {
-  //       name: "HTML",
-  //       icon: "/icons/html.svg",
-  //     },
-  //     {
-  //       name: "CSS",
-  //       icon: "/icons/css.svg",
-  //     },
-  //     {
-  //       name: "Javascript",
-  //       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
-  //     },
-  //   ],
-  // },
   {
     title: "Watches E-Commerce",
     description: "Watches store",
@@ -43,6 +21,32 @@ export const works: Work[] = [
     ],
     link: "https://watch-haven.netlify.app/",
     repo: "https://github.com/ahmedmohamed05/e-commerce",
+    technologies: [
+      {
+        name: "React",
+        icon: "/icons/react.svg",
+      },
+      {
+        name: "Ts",
+        icon: "/icons/ts.svg",
+      },
+      {
+        name: "Tailwind CSS",
+        icon: "/icons/tailwind.svg",
+      },
+    ],
+  },
+
+  {
+    title: "Chess Game",
+    description: "Simple Chess Game Build Pure React + Ts",
+    images: [
+      "/images/chess-1.png",
+      "/images/chess-2.png",
+      "/images/chess-3.png",
+    ],
+    link: "https://chess-j.netlify.app/",
+    repo: "https://github.com/ahmedmohamed05/chess",
     technologies: [
       {
         name: "React",
@@ -87,32 +91,6 @@ export const works: Work[] = [
   },
 
   {
-    title: "Chess Game",
-    description: "Simple Chess Game Build Pure React + Ts",
-    images: [
-      "/images/chess-1.png",
-      "/images/chess-2.png",
-      "/images/chess-3.png",
-    ],
-    link: "https://chess-j.netlify.app/",
-    repo: "https://github.com/ahmedmohamed05/chess",
-    technologies: [
-      {
-        name: "React",
-        icon: "/icons/react.svg",
-      },
-      {
-        name: "Ts",
-        icon: "/icons/ts.svg",
-      },
-      {
-        name: "Tailwind CSS",
-        icon: "/icons/tailwind.svg",
-      },
-    ],
-  },
-
-  {
     title: "True Footballer",
     description:
       "A Football quiz desktop app with simple data-base for the accounts and scores",
@@ -131,23 +109,4 @@ export const works: Work[] = [
       { name: ".NET", icon: "/icons/dotnet.svg" },
     ],
   },
-
-  // {
-  //   title: "Google Clone",
-  //   description: "Google homepage clone with html css",
-  //   images: [
-  //     "/images/true-footballer-1.png",
-  //     "/images/true-footballer-2.png",
-  //     "/images/true-footballer-3.png",
-  //     "/images/true-footballer-4.png",
-  //   ],
-  //   repo: "https://github.com/ahmedmohamed05/clone-google ",
-  //   technologies: [
-  //     {
-  //       name: "C++",
-  //       icon: "/icons/cpp.svg",
-  //     },
-  //     { name: ".NET", icon: "/icons/dotnet.svg" },
-  //   ],
-  // },
 ];

@@ -2,13 +2,26 @@
 import WorkCard from "../components/WorkCard.astro";
 import { works } from "../content/works";
 import Section from "../layout/Section.astro";
+import SkeletonWorkCard from "../skeleton-components/SkeletonWorkCard.astro";
 ---
 
 <Section id="works">
   <div class="container">
     <h1 class="fade-in-element font-bold">My Works</h1>
-    <div class="works-grid fade-in-element">
-      {works.map((work) => <WorkCard {...work} />)}
+    <div class="works-container">
+      <!-- Skeleton Loading State -->
+      <div class="skeleton-grid" id="skeleton-works">
+        {
+          Array.from({ length: works.length }, (_, index) => (
+            <SkeletonWorkCard key={index} />
+          ))
+        }
+      </div>
+
+      <!-- Actual Content -->
+      <div class="works-grid fade-in-element mb-8" id="actual-works">
+        {works.map((work) => <WorkCard {...work} />)}
+      </div>
     </div>
   </div>
 </Section>
@@ -19,14 +32,46 @@ import Section from "../layout/Section.astro";
     margin-bottom: 2rem;
   }
 
-  .works-grid {
+  .works-grid,
+  .skeleton-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 500px), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 490px), 1fr));
     gap: 2rem;
+  }
+
+  /* Initially hide actual content */
+  .works-grid {
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    display: none;
+  }
+
+  /* Show actual content when loaded */
+  .content-loaded .works-grid {
+    opacity: 1;
+    display: grid;
+  }
+
+  /* Hide skeleton when content loads */
+  .skeleton-grid {
+    opacity: 1;
+    transition: opacity 0.3s ease-out;
+  }
+
+  .content-loaded .skeleton-grid {
+    display: none;
+    pointer-events: none;
   }
 </style>
 
 <script>
   import { fadeIn } from "../utils/fadeIn";
   fadeIn();
+
+  const container = document.querySelector(".works-container");
+
+  // Initialize when DOM is ready
+  document.addEventListener("DOMContentLoaded", () => {
+    container?.classList.add("content-loaded");
+  });
 </script>
